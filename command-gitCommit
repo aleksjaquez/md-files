@@ -1,10 +1,10 @@
 ---
-auto_execution_mode: 0
+auto_execution_mode: 2
 description: This command analyzes the repository state to group pending changes into independent semantic commits, performs a security scan for sensitive data, and pushes the current branch.
 ---
 Group all current changes into meaningful semantic commits and push the current
 branch.
-Optional context for commit messages: "
+Optional context for commit messages: `$ARGUMENTS`
 Rules:
 - First inspect the full repository state:
 - git status --short'
@@ -15,11 +15,11 @@ Rules:
 release, or config.
 - Create multiple commits when there are independent changes. Do not mix
 unrelated changes in the same commit.
-- If ' is not empty, use it as context to adjust commit messages, but do not force
+- If `$ARGUMENTS` is not empty, use it as context to adjust commit messages, but do not force
 that text if it does not accurately describe the changes.
 - Use clear, semantic, concise commit messages that follow the repo's recent
 style.
-- Before committing, check for sensitive or suspicious files ('env', tokens,
+- Before committing, check for sensitive or suspicious files ('.env', tokens,
 credentials, keys, secrets). If any appear, stop and ask.
 - Include new, modified, and deleted files that belong to each group.
 - Do not revert existing changes.
